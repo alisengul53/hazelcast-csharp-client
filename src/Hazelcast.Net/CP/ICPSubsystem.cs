@@ -31,5 +31,16 @@ namespace Hazelcast.CP
         /// exist already in the cluster, a new object is created.</para>
         /// </remarks>
         Task<IAtomicLong> GetAtomicLongAsync(string name);
+
+        /// <summary>
+        /// Gets an <see cref="IAtomicReference{T}"/> distributed object.
+        /// </summary>
+        /// <param name="name">The unique name of the atomic reference.</param>
+        /// <returns>The atomic reference that was retrieved or created.</returns>
+        /// <remarks>
+        /// <para>If an object with the specified <paramref name="name"/> does not
+        /// exist already in the cluster, a new object is created.</para>
+        /// </remarks>
+        Task<IAtomicReference<T>> GetAtomicReferenceAsync<T>(string name);
     }
 }

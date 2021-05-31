@@ -84,7 +84,6 @@ namespace Hazelcast.CP
         /// Sets the value.
         /// </summary>
         /// <param name="value">The value to set.</param>
-        /// <returns>The updated value.</returns>
         Task SetAsync(long value);
     }
 }
