@@ -136,5 +136,25 @@ namespace Hazelcast.Testing.Remote
         /// <inheritdoc />
         public Task<Response> ExecuteOnControllerAsync(string clusterId, string script, Lang lang, CancellationToken cancellationToken = default)
             => WithLock(token => executeOnController(clusterId, script, lang, token), cancellationToken);
+
+        public async void LoginToHazelcastCloud(string uri, string apiKey, string apiSecret)
+        {
+            await loginToHazelcastCloud(uri, apiKey, apiSecret);
+        }
+
+        public Task<CloudCluster> CreateHazelcastCloudStandardCluster(string hzVersion, bool isTlsEnabled, CancellationToken cancellationToken = default)
+            => WithLock(token => createHazelcastCloudStandardCluster(hzVersion, isTlsEnabled, token), cancellationToken);
+
+        public Task<CloudCluster> CreateHazelcastCloudEnterpriseCluster(string cloudProvider, string hzVersion, bool isTlsEnabled, CancellationToken cancellationToken = default)
+            => WithLock(token => createHazelcastCloudEnterpriseCluster(cloudProvider, hzVersion, isTlsEnabled, token), cancellationToken);
+
+        public Task<bool> ScaleUpDownHazelcastCloudStandardCluster(string clusterId, int scaleNumber,
+            CancellationToken cancellationToken = default)
+            => WithLock(token => scaleUpDownHazelcastCloudStandardCluster(clusterId, scaleNumber, token),
+                cancellationToken);
+
+        public Task<CloudCluster> GetHazelcastCloudCluster(string clusterId,
+            CancellationToken cancellationToken = default)
+            => WithLock(token => getHazelcastCloudCluster(clusterId, token), cancellationToken);
     }
 }

@@ -138,5 +138,51 @@ namespace Hazelcast.Testing.Remote
         /// <param name="cancellationToken">An optional cancellation token.</param>
         /// <returns>The result of the script.</returns>
         Task<Response> ExecuteOnControllerAsync(string clusterId, string script, Lang lang, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Login to hazelcast cloud.
+        /// </summary>
+        /// <param name="uri">Cloud env uri</param>
+        /// <param name="apiKey">Api key for cloud</param>
+        /// <param name="apiSecret">Api secret for cloud</param>
+        void LoginToHazelcastCloud(string uri, string apiKey, string apiSecret);
+
+        /// <summary>
+        /// Creates a standard cluster in Hazelcast Cloud
+        /// </summary>
+        /// <param name="hzVersion"></param>
+        /// <param name="isTlsEnabled"></param>
+        /// <param name="cancellationToken">An optional cancellation token.</param>
+        /// <returns>Cloud cluster information</returns>
+        Task<CloudCluster> CreateHazelcastCloudStandardCluster(string hzVersion, bool isTlsEnabled, CancellationToken cancellationToken = default);
+        
+        /// <summary>
+        /// Creates an enterprise cluster in Hazelcast Cloud
+        /// </summary>
+        /// <param name="cloudProvider"></param>
+        /// <param name="hzVersion"></param>
+        /// <param name="isTlsEnabled"></param>
+        /// <param name="cancellationToken">An optional cancellation token.</param>
+        /// <returns>Cloud cluster information</returns>
+        Task<CloudCluster> CreateHazelcastCloudEnterpriseCluster(string cloudProvider, string hzVersion, bool isTlsEnabled, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Scale up/down standard cluster
+        /// </summary>
+        /// <param name="clusterId"></param>
+        /// <param name="scaleNumber"></param>
+        /// <param name="cancellationToken">An optional cancellation token.</param>
+        /// <returns>Whether the cluster is scaled up/down properly</returns>
+        Task<bool> ScaleUpDownHazelcastCloudStandardCluster(string clusterId, int scaleNumber, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Get the cluster information
+        /// </summary>
+        /// <param name="clusterId"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>Cloud cluster information</returns>
+        Task<CloudCluster> GetHazelcastCloudCluster(string clusterId, CancellationToken cancellationToken = default);
+
+
     }
 }
