@@ -35,7 +35,7 @@ namespace Hazelcast.Tests.CloudTests
                 _hzVersion = Environment.GetEnvironmentVariable("standardClusterVersion");
             
             //_cloudCluster = await RcClient.CreateHazelcastCloudStandardCluster(_hzVersion, false);
-            _cloudCluster = await RcClient.GetHazelcastCloudCluster("1424");
+            _cloudCluster = await RcClient.GetHazelcastCloudCluster("1432");
             
             _options = new HazelcastOptionsBuilder()
                 .WithConsoleLogger()
