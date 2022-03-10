@@ -71,16 +71,6 @@ namespace Hazelcast.Tests.NearCache
         protected override string RcClusterConfiguration => Resources.Cluster_NearCache;
 
         [Test]
-        [Timeout(120_000)]
-        public void CanConnectToCluster()
-        {
-            var client = (HazelcastClient) _client;
-            var cluster = client.Cluster;
-
-            var x = cluster.Connections;
-        }
-
-        [Test]
         [Timeout(240_000)]
         public async Task NearCacheRecoversFromDistortions()
         {
